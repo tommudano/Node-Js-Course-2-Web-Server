@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 let app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -63,12 +64,7 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');  // Pints on cmd
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);  // Pints on cmd
 });  // Bind app to host port
 // Abro localhost:3000
-
-/*
-  Nodemon wont detect changes to .hbs
-  SOLUTION: nodemon server.js -e js,hbs (-e : which extensions do you want nodemon to detect)
-*/
